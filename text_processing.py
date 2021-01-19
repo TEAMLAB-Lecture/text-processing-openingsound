@@ -33,7 +33,15 @@ def normalize(input_string):
              >>> tp.normalize(input_string2)
              'extra space'
     """
-    normalized_string = None
+    input_string.strip()  #좌우 공백을 없앰
+    # 띄어쓰기는 한칸으로 됨
+    split_string = input_string.split()
+    normalized_string = ""
+    for word in split_string:
+        normalized_string += word
+        normalized_string += " "
+    normalized_string = normalized_string.rstrip() # 오른쪽 공백을 없앰
+    normalized_string = normalized_string.lower()
     return normalized_string
 
 
@@ -52,11 +60,18 @@ def no_vowels(input_string):
         Examples:
             >>> import text_processing as tp
             >>> input_string1 = "This is an example."
-            >>> tp.normalize(input_string1)
+            >>> tp.no_vowels(input_string1)
             "Ths s n xmpl."
             >>> input_string2 = "We love Python!"
-            >>> tp.normalize(input_string2)
+            >>> tp.no_vowels(input_string2)
             ''W lv Pythn!'
     """
-    no_vowel_string = None
+    no_vowel_string = ""
+    for char in input_string:
+        if char == "a" or char == "i" or char == "o" or char == "u" or char == "e" :
+            continue
+        elif char == "A" or char == "I" or char == "O" or char == "U" or char == "E" :
+            continue
+        else:
+            no_vowel_string += char
     return no_vowel_string
